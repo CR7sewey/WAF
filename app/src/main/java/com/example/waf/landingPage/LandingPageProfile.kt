@@ -3,6 +3,7 @@ package com.example.waf.landingPage
 import android.media.Image
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -33,27 +34,33 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.waf.R
 import com.example.waf.common.modules.Player
 import com.example.waf.common.modules.Positions
+import com.example.waf.common.navigation.NavigationRoutes
 import com.example.waf.fakeProfile
 import kotlin.String
 
 @Composable
-fun LandingPageProfile(modifier: Modifier = Modifier) {
+fun LandingPageProfile(navHostController: NavHostController, modifier: Modifier) {
     val fakeProfile: Player = fakeProfile
-    ElevatedCardExample(fakeProfile)
+    ElevatedCardExample(navHostController, fakeProfile)
 }
 
 @Composable
-fun ElevatedCardExample(profile: Player) {
+fun ElevatedCardExample(navHostController: NavHostController, profile: Player) {
     ElevatedCard(
         elevation = CardDefaults.cardElevation(
             defaultElevation = 6.dp
         ),
         modifier = Modifier
             .fillMaxWidth()
-            . padding(24.dp)
+            .padding(24.dp)
+            .clickable {
+                navHostController.navigate(route = "profilePage/${profile.id}")
+            }
     ) {
         Column {
             Row(
@@ -177,5 +184,5 @@ fun ElevatedCardExample(profile: Player) {
 @Composable
 fun ElevatedCardPreview() {
     val fakeProfile: Player = fakeProfile
-    ElevatedCardExample(fakeProfile)
+    ElevatedCardExample(navHostController = rememberNavController(), fakeProfile)
 }

@@ -5,12 +5,15 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavGraph
 import androidx.navigation.NavHost
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.createGraph
+import androidx.navigation.navArgument
 import com.example.waf.common.navigation.NavigationRoutes
 import com.example.waf.landingPage.LandingPage
+import com.example.waf.profile.ProfileUI
 import com.example.waf.sign.SignPage
 
 
@@ -25,8 +28,14 @@ fun Navigation(navGraph: NavHostController, modifier: Modifier = Modifier) {
             SignPage()
         }
         composable(route = NavigationRoutes.LandingPage.route) {
-            LandingPage()
+            LandingPage(navGraph)
         }
+        composable(route = NavigationRoutes.ProfilePage.route, arguments = listOf(navArgument("id"){type =
+            NavType.StringType})) {
+            ProfileUI(id = requireNotNull(it.arguments?.getString("id").toString()))
+        }
+
+
 
     }
 

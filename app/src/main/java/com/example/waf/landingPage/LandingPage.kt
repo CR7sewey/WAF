@@ -30,12 +30,13 @@ import androidx.compose.ui.semantics.isTraversalGroup
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.traversalIndex
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 
 
 @Composable
-fun LandingPage(modifier: Modifier = Modifier) {
+fun LandingPage(navHostController: NavHostController, modifier: Modifier = Modifier) {
     Column {
-        LandingPageProfile(modifier)
+        LandingPageProfile(navHostController, modifier)
         LazyColumn {
             items(10) {
                 LandingPageMatch()
