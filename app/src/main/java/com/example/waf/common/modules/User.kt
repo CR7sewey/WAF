@@ -1,5 +1,7 @@
 package com.example.waf.common.modules
 
+import com.example.waf.fakeMatch
+
 
 data class User(
     val id: String,
@@ -40,4 +42,23 @@ data class Pitch(
     val pitchLength: Double?,
     val pitchWidth: Double?,
     val pitchDimensions: String
+)
+
+data class Match(
+    val id: String,
+    val pitch: Pitch,
+    val result: String,
+    val date: String,
+    val time: String,
+    val team1: Team,
+    val team2: Team,
+    val closed: Boolean = false
+)
+
+data class Team(
+    val id: String,
+    val name: String,
+    val players: List<Player>,
+    val overallRating: Int,
+
 )

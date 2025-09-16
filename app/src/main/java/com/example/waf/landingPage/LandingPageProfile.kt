@@ -36,29 +36,12 @@ import androidx.compose.ui.unit.sp
 import com.example.waf.R
 import com.example.waf.common.modules.Player
 import com.example.waf.common.modules.Positions
+import com.example.waf.fakeProfile
 import kotlin.String
 
 @Composable
 fun LandingPageProfile(modifier: Modifier = Modifier) {
-    val fakeProfile: Player = Player(
-        id = "1",
-        name = "Mike",
-        age = 26,
-        favoritePosition = Positions.AttackingMidfielder,
-        mostPlayedPosition = Positions.AttackingMidfielder,
-        goals = 10,
-        assists = 12,
-        rating = 87,
-        skill1 = "Dribbling",
-        url = null,
-        favoriteTeam = null,
-        favoritePlayer= null,
-         skill2= null,
-         skill3= null,
-         skill4= null,
-         skill5= null,
-        gamesPlayed = 20
-    )
+    val fakeProfile: Player = fakeProfile
     ElevatedCardExample(fakeProfile)
 }
 
@@ -193,24 +176,6 @@ fun ElevatedCardExample(profile: Player) {
 @Preview
 @Composable
 fun ElevatedCardPreview() {
-    val fakeProfile: Player = Player(
-        id = "1",
-        name = "Mike",
-        age = 26,
-        favoritePosition = Positions.AttackingMidfielder,
-        mostPlayedPosition = Positions.AttackingMidfielder,
-        goals = 10,
-        assists = 12,
-        rating = 87,
-        skill1 = "Dribbling",
-        url = null,
-        favoriteTeam = null,
-        favoritePlayer= null,
-        skill2= null,
-        skill3= null,
-        skill4= null,
-        skill5= null,
-        gamesPlayed = 20
-    )
+    val fakeProfile: Player = fakeProfile
     ElevatedCardExample(fakeProfile)
 }
