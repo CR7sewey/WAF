@@ -4,6 +4,7 @@ import android.window.SplashScreen
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -12,6 +13,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.material.MaterialTheme
@@ -37,6 +39,35 @@ import com.example.waf.R
 
 @Composable
 fun ProfileUI(id: String, modifier: Modifier = Modifier) {
+
+    Row(
+        modifier = Modifier.fillMaxWidth().padding(end = 10.dp),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.SpaceBetween
+    ) {
+        Image(
+            painter = painterResource(id = R.drawable.legend),
+            contentDescription = null,
+            modifier = Modifier.size(240.dp),
+        )
+    Column(
+        horizontalAlignment = Alignment.Start,
+
+    ) {
+
+        Text(
+            text = "Name",
+            fontWeight = FontWeight.Bold,
+            fontSize = 20.sp
+        )
+        Text(
+            text = "Age",
+            fontWeight = FontWeight.SemiBold,
+            fontSize = 22.sp
+        )
+
+    }
+    }
 
 }
 

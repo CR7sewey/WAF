@@ -1,6 +1,7 @@
 package com.example.waf.landingPage
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -20,16 +21,17 @@ import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.example.waf.common.modules.Match
 import com.example.waf.fakeMatch
 
 @Composable
-fun LandingPageMatch(modifier: Modifier = Modifier) {
-    MatchContent()
+fun LandingPageMatch(navHostController: NavHostController, modifier: Modifier = Modifier) {
+    MatchContent(navHostController, modifier)
 }
 
 @Composable
-fun MatchContent(modifier: Modifier = Modifier) {
+fun MatchContent(navHostController: NavHostController, modifier: Modifier = Modifier) {
     val fakeMatch = fakeMatch
     ElevatedCard(
         elevation = CardDefaults.cardElevation(
@@ -37,7 +39,11 @@ fun MatchContent(modifier: Modifier = Modifier) {
         ),
         modifier = Modifier
             .fillMaxWidth()
-            .padding(start = 24.dp, end = 24.dp, top = 10.dp),
+            .padding(start = 24.dp, end = 24.dp, top = 10.dp)
+            .clickable {
+                navHostController.navigate(route = "matchPage/${fakeMatch.id}")
+            }
+        ,
         shape = RectangleShape
     ) {
         Column(

@@ -13,6 +13,7 @@ import androidx.navigation.createGraph
 import androidx.navigation.navArgument
 import com.example.waf.common.navigation.NavigationRoutes
 import com.example.waf.landingPage.LandingPage
+import com.example.waf.match.MatchUI
 import com.example.waf.profile.ProfileUI
 import com.example.waf.sign.SignPage
 
@@ -33,6 +34,10 @@ fun Navigation(navGraph: NavHostController, modifier: Modifier = Modifier) {
         composable(route = NavigationRoutes.ProfilePage.route, arguments = listOf(navArgument("id"){type =
             NavType.StringType})) {
             ProfileUI(id = requireNotNull(it.arguments?.getString("id").toString()))
+        }
+        composable(route = NavigationRoutes.MatchPage.route, arguments = listOf(navArgument("id"){type =
+            NavType.StringType})) {
+            MatchUI(id = requireNotNull(it.arguments?.getString("id").toString()))
         }
 
 

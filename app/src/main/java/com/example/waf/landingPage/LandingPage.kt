@@ -39,7 +39,7 @@ fun LandingPage(navHostController: NavHostController, modifier: Modifier = Modif
         LandingPageProfile(navHostController, modifier)
         LazyColumn {
             items(10) {
-                LandingPageMatch()
+                LandingPageMatch(navHostController, modifier)
             }
         }
     }
