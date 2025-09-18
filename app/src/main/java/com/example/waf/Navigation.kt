@@ -28,7 +28,7 @@ import com.example.waf.sign.SignPage
 
 
 @Composable
-fun Navigation(navGraph: NavHostController, modifier: Modifier = Modifier) {
+fun Navigation(navGraph: NavHostController, changeRoute: (String) -> Unit, modifier: Modifier = Modifier) {
 
 
     val graph: NavGraph = navGraph.createGraph(
@@ -60,6 +60,7 @@ fun Navigation(navGraph: NavHostController, modifier: Modifier = Modifier) {
             SignPage()
         }
         composable(route = NavigationRoutes.LandingPage.route) {
+            changeRoute.invoke(navGraph.currentBackStackEntry?.destination?.route.toString())
             LandingPage(navGraph)
         }
         composable(route = NavigationRoutes.ProfilePage.route, arguments = listOf(navArgument("id"){type =
