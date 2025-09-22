@@ -48,6 +48,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.waf.common.navigation.NavigationRoutes
 import com.example.waf.ui.theme.WAFTheme
@@ -74,7 +75,7 @@ class MainActivity : ComponentActivity() {
                             ) {
                             return@Scaffold
                         }
-                        Bottom()
+                        Bottom(navController)
                     },
                    /* topBar = {
                         if (
@@ -158,27 +159,27 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Bottom(modifier: Modifier = Modifier) {
+fun Bottom(navHostController: NavHostController, modifier: Modifier = Modifier) {
 
     data class BottomItems(
-        val id: String,
+        val obj: NavigationRoutes,
         val title: String,
         val icon: ImageVector
     )
 
     var items = listOf(
        BottomItems(
-           id = "1",
+           obj = NavigationRoutes.LandingPage,
            title = "Home",
            icon = Icons.Default.Home
        ),
         BottomItems(
-            id = "2",
+            obj = NavigationRoutes.EntryScreen,
             title = "Rating",
             icon = Icons.Default.Search
         ),
         BottomItems(
-            id = "3",
+            obj = NavigationRoutes.ProfilePage,
             title = "Profile",
             icon = Icons.Default.Person
         )
@@ -197,6 +198,8 @@ fun Bottom(modifier: Modifier = Modifier) {
                 selected = selectedNavigationIndex.intValue == index,
                 onClick = {
                     selectedNavigationIndex.intValue = index
+                    navHostController.navigate(item.obj.route)
+
                 },
                 icon = {
                     if (item.icon == null) {

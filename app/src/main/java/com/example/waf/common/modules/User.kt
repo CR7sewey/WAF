@@ -26,11 +26,15 @@ data class Player(
     val goals: Int,
     val assists: Int,
     val rating: Int,
-    val skill1: String?,
-    val skill2: String?,
-    val skill3: String?,
-    val skill4: String?,
-    val skill5: String?
+    val favoritePitch: Pitch?,
+    val skill1: List<Skill?> = emptyList<Skill>()
+)
+
+data class Skill(
+    val id: String,
+    val name: String,
+    val description: String,
+    val rating: Int
 )
 
 data class Pitch(

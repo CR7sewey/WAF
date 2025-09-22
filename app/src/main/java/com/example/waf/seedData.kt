@@ -5,6 +5,7 @@ import com.example.waf.common.modules.Pitch
 import com.example.waf.common.modules.PitchTypes
 import com.example.waf.common.modules.Player
 import com.example.waf.common.modules.Positions
+import com.example.waf.common.modules.Skill
 import com.example.waf.common.modules.Team
 
 val fakeProfile: Player = Player(
@@ -16,14 +17,29 @@ val fakeProfile: Player = Player(
     goals = 10,
     assists = 12,
     rating = 87,
-    skill1 = "Dribbling",
     url = null,
     favoriteTeam = null,
     favoritePlayer= null,
-    skill2= null,
-    skill3= null,
-    skill4= null,
-    skill5= null,
+    skill1 = listOf<Skill>(Skill(
+        id = "1",
+        name = "Dribbling",
+        description = "Dribbling",
+        rating = 87
+    ),
+        Skill(
+            id = "2",
+            name = "Passing",
+            description = "Passing",
+            rating = 87
+            ),
+        Skill(
+            id = "3",
+            name = "Shooting",
+            description = "Shooting",
+            rating = 87
+        )
+    ),
+    favoritePitch = null,
     gamesPlayed = 20
 )
 
