@@ -174,7 +174,7 @@ fun Bottom(navHostController: NavHostController, modifier: Modifier = Modifier) 
            icon = Icons.Default.Home
        ),
         BottomItems(
-            obj = NavigationRoutes.EntryScreen,
+            obj = NavigationRoutes.RatingPage,
             title = "Rating",
             icon = Icons.Default.Search
         ),
@@ -198,6 +198,9 @@ fun Bottom(navHostController: NavHostController, modifier: Modifier = Modifier) 
                 selected = selectedNavigationIndex.intValue == index,
                 onClick = {
                     selectedNavigationIndex.intValue = index
+                    if (item.obj is NavigationRoutes.ProfilePage) {
+                        navHostController.navigate(item.obj.createRoute("1"))
+                    }
                     navHostController.navigate(item.obj.route)
 
                 },
